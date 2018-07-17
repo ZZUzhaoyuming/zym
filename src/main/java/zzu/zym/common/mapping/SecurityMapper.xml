@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zzu.zym.common.dao.SecurityMapper" >
+  <resultMap id="BaseResultMap" type="zzu.zym.common.entity.Security" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="securityname" property="securityname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="securityaddress" property="securityaddress" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="securitypicture" property="securitypicture" jdbcType="VARCHAR" />
+    <result column="power" property="power" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, securityname, sex, age, phone, securityaddress, area, securitypicture, power
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_security
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_security
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_security
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="zzu.zym.common.entity.Security" >
+    insert into t_security (id, securityname, sex, 
+      age, phone, securityaddress, 
+      area, securitypicture, power
+      )
+    values (#{id,jdbcType=VARCHAR}, #{securityname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{securityaddress,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{securitypicture,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="zzu.zym.common.entity.Security" >
+    insert into t_security
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="securityname != null" >
+        securityname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="securityaddress != null" >
+        securityaddress,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="securitypicture != null" >
+        securitypicture,
+      </if>
+      <if test="power != null" >
+        power,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="securityname != null" >
+        #{securityname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="securityaddress != null" >
+        #{securityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="securitypicture != null" >
+        #{securitypicture,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="zzu.zym.common.entity.Security" >
+    update t_security
+    <set >
+      <if test="securityname != null" >
+        securityname = #{securityname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="securityaddress != null" >
+        securityaddress = #{securityaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="securitypicture != null" >
+        securitypicture = #{securitypicture,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="zzu.zym.common.entity.Security" >
+    update t_security
+    set securityname = #{securityname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      securityaddress = #{securityaddress,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      securitypicture = #{securitypicture,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

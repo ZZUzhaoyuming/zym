@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zzu.zym.common.dao.MedicalRecordsMapper" >
+  <resultMap id="BaseResultMap" type="zzu.zym.common.entity.MedicalRecords" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="medicalrecordsname" property="medicalrecordsname" jdbcType="VARCHAR" />
+    <result column="generatetime" property="generatetime" jdbcType="DATE" />
+    <result column="cc" property="cc" jdbcType="VARCHAR" />
+    <result column="hpi" property="hpi" jdbcType="VARCHAR" />
+    <result column="pmh" property="pmh" jdbcType="VARCHAR" />
+    <result column="ph" property="ph" jdbcType="VARCHAR" />
+    <result column="eh" property="eh" jdbcType="VARCHAR" />
+    <result column="fh" property="fh" jdbcType="VARCHAR" />
+    <result column="pc" property="pc" jdbcType="VARCHAR" />
+    <result column="ae" property="ae" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, medicalrecordsname, generatetime, cc, hpi, pmh, ph, eh, fh, pc, ae
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_medicalrecords
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_medicalrecords
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_medicalrecords
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="zzu.zym.common.entity.MedicalRecords" >
+    insert into t_medicalrecords (id, medicalrecordsname, generatetime, 
+      cc, hpi, pmh, ph, 
+      eh, fh, pc, ae
+      )
+    values (#{id,jdbcType=VARCHAR}, #{medicalrecordsname,jdbcType=VARCHAR}, #{generatetime,jdbcType=DATE},
+      #{cc,jdbcType=VARCHAR}, #{hpi,jdbcType=VARCHAR}, #{pmh,jdbcType=VARCHAR}, #{ph,jdbcType=VARCHAR}, 
+      #{eh,jdbcType=VARCHAR}, #{fh,jdbcType=VARCHAR}, #{pc,jdbcType=VARCHAR}, #{ae,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="zzu.zym.common.entity.MedicalRecords" >
+    insert into t_medicalrecords
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="medicalrecordsname != null" >
+        medicalrecordsname,
+      </if>
+      <if test="generatetime != null" >
+        generatetime,
+      </if>
+      <if test="cc != null" >
+        cc,
+      </if>
+      <if test="hpi != null" >
+        hpi,
+      </if>
+      <if test="pmh != null" >
+        pmh,
+      </if>
+      <if test="ph != null" >
+        ph,
+      </if>
+      <if test="eh != null" >
+        eh,
+      </if>
+      <if test="fh != null" >
+        fh,
+      </if>
+      <if test="pc != null" >
+        pc,
+      </if>
+      <if test="ae != null" >
+        ae,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalrecordsname != null" >
+        #{medicalrecordsname,jdbcType=VARCHAR},
+      </if>
+      <if test="generatetime != null" >
+        #{generatetime,jdbcType=DATE},
+      </if>
+      <if test="cc != null" >
+        #{cc,jdbcType=VARCHAR},
+      </if>
+      <if test="hpi != null" >
+        #{hpi,jdbcType=VARCHAR},
+      </if>
+      <if test="pmh != null" >
+        #{pmh,jdbcType=VARCHAR},
+      </if>
+      <if test="ph != null" >
+        #{ph,jdbcType=VARCHAR},
+      </if>
+      <if test="eh != null" >
+        #{eh,jdbcType=VARCHAR},
+      </if>
+      <if test="fh != null" >
+        #{fh,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null" >
+        #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="ae != null" >
+        #{ae,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="zzu.zym.common.entity.MedicalRecords" >
+    update t_medicalrecords
+    <set >
+      <if test="medicalrecordsname != null" >
+        medicalrecordsname = #{medicalrecordsname,jdbcType=VARCHAR},
+      </if>
+      <if test="generatetime != null" >
+        generatetime = #{generatetime,jdbcType=DATE},
+      </if>
+      <if test="cc != null" >
+        cc = #{cc,jdbcType=VARCHAR},
+      </if>
+      <if test="hpi != null" >
+        hpi = #{hpi,jdbcType=VARCHAR},
+      </if>
+      <if test="pmh != null" >
+        pmh = #{pmh,jdbcType=VARCHAR},
+      </if>
+      <if test="ph != null" >
+        ph = #{ph,jdbcType=VARCHAR},
+      </if>
+      <if test="eh != null" >
+        eh = #{eh,jdbcType=VARCHAR},
+      </if>
+      <if test="fh != null" >
+        fh = #{fh,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null" >
+        pc = #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="ae != null" >
+        ae = #{ae,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="zzu.zym.common.entity.MedicalRecords" >
+    update t_medicalrecords
+    set medicalrecordsname = #{medicalrecordsname,jdbcType=VARCHAR},
+      cc = #{cc,jdbcType=VARCHAR},
+      hpi = #{hpi,jdbcType=VARCHAR},
+      pmh = #{pmh,jdbcType=VARCHAR},
+      ph = #{ph,jdbcType=VARCHAR},
+      eh = #{eh,jdbcType=VARCHAR},
+      fh = #{fh,jdbcType=VARCHAR},
+      pc = #{pc,jdbcType=VARCHAR},
+      ae = #{ae,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

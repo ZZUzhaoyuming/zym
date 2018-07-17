@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "系统管理",
+    "iconCls": "icon-2012080404391",
+    "href": "",
+    "child": [
+      {
+        "id": 2,
+        "name": "病人信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/patient/patientlist.jsp"
+      },
+      {
+        "id": 3,
+        "name": "医生信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/doctor/doctorlist.jsp"
+      },
+      {
+        "id": 4,
+        "name": "病历信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/medicalrecords/medicalrecordslist.jsp"
+      },
+      {
+        "id": 7,
+        "name": "招聘信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/recruitment/recruitmentlist.jsp"
+      },
+      {
+        "id": 9,
+        "name": "安保信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/security/securitylist.jsp"
+      },
+      {
+        "id": 10,
+        "name": "病床信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/bed/bedlist.jsp"
+      },
+      {
+        "id": 21,
+        "name": "考勤信息管理",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/attendance/attendancelist.jsp"
+      },
+      {
+        "id": 10,
+        "name": "病情分析统计",
+        "iconCls": "icon-application_xp_terminal",
+        "href": "/his_zym/back/echarts/echarts.jsp"
+      }
+    ]
+  }
+]

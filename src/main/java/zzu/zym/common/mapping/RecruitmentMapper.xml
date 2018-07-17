@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zzu.zym.common.dao.RecruitmentMapper" >
+  <resultMap id="BaseResultMap" type="zzu.zym.common.entity.Recruitment" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="recruitmentname" property="recruitmentname" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="recruitmentphone" property="recruitmentphone" jdbcType="VARCHAR" />
+    <result column="recruitmenturl" property="recruitmenturl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, recruitmentname, age, sex, recruitmentphone, recruitmenturl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="zzu.zym.common.entity.RecruitmentKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_recruitment
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="zzu.zym.common.entity.RecruitmentKey" >
+    select
+    <include refid="Base_Column_List" />
+    from t_recruitment
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="zzu.zym.common.entity.RecruitmentKey" >
+    delete from t_recruitment
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="zzu.zym.common.entity.Recruitment" >
+    insert into t_recruitment (id, recruitmentname, age, 
+      sex, recruitmentphone, recruitmenturl
+      )
+    values (#{id,jdbcType=VARCHAR}, #{recruitmentname,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{recruitmentphone,jdbcType=VARCHAR}, #{recruitmenturl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="zzu.zym.common.entity.Recruitment" >
+    insert into t_recruitment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="recruitmentname != null" >
+        recruitmentname,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="recruitmentphone != null" >
+        recruitmentphone,
+      </if>
+      <if test="recruitmenturl != null" >
+        recruitmenturl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentname != null" >
+        #{recruitmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentphone != null" >
+        #{recruitmentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmenturl != null" >
+        #{recruitmenturl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="zzu.zym.common.entity.Recruitment" >
+    update t_recruitment
+    <set >
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentphone != null" >
+        recruitmentphone = #{recruitmentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmenturl != null" >
+        recruitmenturl = #{recruitmenturl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+      and recruitmentname = #{recruitmentname,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="zzu.zym.common.entity.Recruitment" >
+    update t_recruitment
+    set age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      recruitmentphone = #{recruitmentphone,jdbcType=VARCHAR},
+      recruitmenturl = #{recruitmenturl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+      and recruitmentname = #{recruitmentname,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByID" parameterType="zzu.zym.common.entity.Recruitment" >
+    update t_recruitment set sex = #{sex} where id = #{id}
+  </update>
+</mapper>

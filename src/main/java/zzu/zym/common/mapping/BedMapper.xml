@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zzu.zym.common.dao.BedMapper" >
+  <resultMap id="BaseResultMap" type="zzu.zym.common.entity.Bed" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="bedarea" property="bedarea" jdbcType="VARCHAR" />
+    <result column="bedid" property="bedid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bedarea, bedid, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bed
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_bed
+  </select>
+
+ <!-- <select id="selectAlll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_bed
+    where status = #{status,jdbcType=VARCHAR}
+  </select>-->
+
+  <select id="selectAlll" resultType="zzu.zym.common.entity.Bed">
+    select *
+    from t_bed where status like 'no';
+  </select>
+
+  <select id="selectAllll" resultType="zzu.zym.common.entity.Bed">
+    select *
+    from t_bed where status like "%"#{status}"%";
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_bed
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="zzu.zym.common.entity.Bed" >
+    insert into t_bed (id, bedarea, bedid, 
+      status)
+    values (#{id,jdbcType=VARCHAR}, #{bedarea,jdbcType=VARCHAR}, #{bedid,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="zzu.zym.common.entity.Bed" >
+    insert into t_bed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bedarea != null" >
+        bedarea,
+      </if>
+      <if test="bedid != null" >
+        bedid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="bedarea != null" >
+        #{bedarea,jdbcType=VARCHAR},
+      </if>
+      <if test="bedid != null" >
+        #{bedid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="zzu.zym.common.entity.Bed" >
+    update t_bed
+    <set >
+      <if test="bedarea != null" >
+        bedarea = #{bedarea,jdbcType=VARCHAR},
+      </if>
+      <if test="bedid != null" >
+        bedid = #{bedid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="zzu.zym.common.entity.Bed" >
+    update t_bed
+    set bedarea = #{bedarea,jdbcType=VARCHAR},
+      bedid = #{bedid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
